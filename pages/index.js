@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Joystick } from '../src/components/Joystick'
 
 export default function Home() {
   return (
@@ -22,6 +23,8 @@ export default function Home() {
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
+
+          <Joystick />
 
           <a href="https://nextjs.org/learn" className="card">
             <h3>Learn &rarr;</h3>
