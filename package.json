@@ -10,6 +10,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@storybook/addon-knobs": "^5.3.18",
     "next": "9.4.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
