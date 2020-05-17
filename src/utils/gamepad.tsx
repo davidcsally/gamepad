@@ -3,6 +3,7 @@ const gamepaddisconnected = 'gamepaddisconnected'
 
 export class Gamepad {
   gamepad = null
+  isConnected: boolean = false
 
   constructor() {
     this.onConnect()
@@ -10,23 +11,26 @@ export class Gamepad {
 
   onConnect = () => {
     window.addEventListener(gamepadconnected, (e: GamepadEvent) => {
+      console.log('connected!')
       this.gamepad = navigator.getGamepads()[e.gamepad.index]
+      this.isConnected = true
     })
   }
 
   onDisconnect = () => {
     window.addEventListener(gamepaddisconnected, function(e: GamepadEvent) {
+      console.log('disconnected :{')
       this.gamepad = null;
     });
   }
 
-  getAxis1 = () => {
-    return this.gamepad?.axes?.[0]
-  }
+  // getAxis1 = () => {
+  //   return this.gamepad?.axes?.[0]
+  // }
 
-  getAxis2 = () => {
-    return this.gamepad?.axes?.[0]
-  }
+  // getAxis2 = () => {
+  //   return this.gamepad?.axes?.[0]
+  // }
 }
 
 

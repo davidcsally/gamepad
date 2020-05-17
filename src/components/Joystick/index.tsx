@@ -7,6 +7,12 @@ import { Gamepad } from '../../utils/gamepad';
 // 0.125rem
 // 0.0625rem
 
+interface Props {
+  top: number;
+  left: number;
+  axes: any;
+}
+
 const Container = styled.div`
   height: 10rem;
   width: 10rem;
@@ -37,45 +43,70 @@ const Container = styled.div`
   }
 `
 
-const Dot = styled.div`
+const Dot = styled.div.attrs((props) => ({
+  style: {
+    top: `${props.top / 2}%`,
+    left: `${props.left / 2}%`,
+  }
+}))`
   width: 1rem;
   height: 1rem;
   background-color: black;
   position: relative;
   border-radius: 50%;
   z-index: 2;
-
-  top: ${({ top = 0 }) => top / 2}%;
-  left: ${({ left = 0 }) => left / 2}%;
 `;
 
-export const Joystick = ({ top, left }) => {
-  const [position, setPosition] = useState(0)
-
+export const Joystick: React.FC<Props> = ({ top, left, axes }) => {
   return (
-    <Container>
-      <Dot top={top} left={left} />
-    </Container>
+    <div>
+      <p>Axis 1: {axes[0]}</p>
+      <p>Axis 2: {axes[1]}</p>
+      <p>Top: {top}</p>
+      <p>Left: {left}</p>
+      <Container>
+        <Dot top={axes[1] * 100} left={axes[0] * 100} />
+      </Container>
+    </div>
   )
 }
 
-export const withGamepad = (WrappedComponent) => {
-  return class extends React.Component {
-    constructor() {
-      
-      this.state = {}
-    }
-    tick = () => {
+export interface HocProps {
+  top: number;
+  left: number;
+  axes: any;
+}
 
+export function withGamepad<T extends HocProps>(WrappedComponent: React.FC<T>) {
+  return class extends React.Component<T & HocProps, { gamepad: any }> {
+    gamepad: null | any
+
+    constructor(props) {
+      super(props)
+
+      this.gamepad = null
+
+      this.state = { gamepad: null }
+    }
+
+    componentDidMount() {
+      window.requestAnimationFrame(() => { this.tick() })
+      this.gamepad = new Gamepad()
+    }
+
+    tick = () => {
+      window.requestAnimationFrame(() => { this.tick() })
+      if (this.gamepad.isConnected) {
+        this.setState({ gamepad: window.navigator.getGamepads()[0] })
+      }
     }
 
     render() {
-      const gamepad = new Gamepad()
-      const axis1 = gamepad.getAxis1()
-      const axis2 = gamepad.getAxis2()
-  
-      return <WrappedComponent {...this.props} axes=[a] />
-      // const gamepad = connectGamepad()  
+      const { gamepad } = this.state
+      const axis1 = gamepad?.axes[0]
+      const axis2 = gamepad?.axes[1]
+
+      return <WrappedComponent {...this.props} axes={[axis1, axis2]} top={0} left={0} />
     }
   }
 }

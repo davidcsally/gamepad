@@ -1,11 +1,14 @@
 import React from 'react'
 import { number } from "@storybook/addon-knobs";
 
-import { Joystick } from '.'
+import { Joystick, withGamepad } from '.'
 
 export default {
   component: Joystick,
   title: 'Joystick'
 }
 
-export const normal = () => <Joystick top={number('top: ', 0)} left={number('left: ', 0)} />
+export const Normal = () => <Joystick top={number('top: ', 0)} left={number('left: ', 0)} />
+
+const WrappedJoystick = withGamepad(Joystick)
+export const WithGamepad = () => <WrappedJoystick />
