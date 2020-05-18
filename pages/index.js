@@ -1,4 +1,17 @@
+import React from 'react'
 import Head from 'next/head'
+import styled from 'styled-components'
+
+import { withMargin } from '../src/styleHocs/withMargin'
+import { withPadding } from '../src/styleHocs/withPadding'
+
+const Div = styled.div`
+  width: 10rem;
+  height: 10rem;
+  background-color: yellow;
+`
+
+const Container = withPadding(withMargin(Div, { margin: 0, marginBottom: '10px' }), '10px')
 
 export default function Home() {
   return (
@@ -16,6 +29,8 @@ export default function Home() {
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
+
+        <Container />
 
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">

@@ -10,9 +10,11 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@storybook/addon-knobs": "^5.3.18",
     "next": "9.4.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -22,6 +24,7 @@
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "typescript": "^3.9.2"
   }
 }
