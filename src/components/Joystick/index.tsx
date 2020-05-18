@@ -1,16 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import { Gamepad } from '../../utils/gamepad';
-
-// const pxToRem
-// 0.125rem
-// 0.0625rem
-
-interface Props {
-  top: number;
-  left: number;
-  axes: any;
+export interface Props {
+  xAxis: number;
+  yAxis: number;
 }
 
 const Container = styled.div`
@@ -57,56 +50,10 @@ const Dot = styled.div.attrs((props) => ({
   z-index: 2;
 `;
 
-export const Joystick: React.FC<Props> = ({ top, left, axes }) => {
-  return (
-    <div>
-      <p>Axis 1: {axes[0]}</p>
-      <p>Axis 2: {axes[1]}</p>
-      <p>Top: {top}</p>
-      <p>Left: {left}</p>
-      <Container>
-        <Dot top={axes[1] * 100} left={axes[0] * 100} />
-      </Container>
-    </div>
-  )
-}
-
-export interface HocProps {
-  top: number;
-  left: number;
-  axes: any;
-}
-
-export function withGamepad<T extends HocProps>(WrappedComponent: React.FC<T>) {
-  return class extends React.Component<T & HocProps, { gamepad: any }> {
-    gamepad: null | any
-
-    constructor(props) {
-      super(props)
-
-      this.gamepad = null
-
-      this.state = { gamepad: null }
-    }
-
-    componentDidMount() {
-      window.requestAnimationFrame(() => { this.tick() })
-      this.gamepad = new Gamepad()
-    }
-
-    tick = () => {
-      window.requestAnimationFrame(() => { this.tick() })
-      if (this.gamepad.isConnected) {
-        this.setState({ gamepad: window.navigator.getGamepads()[0] })
-      }
-    }
-
-    render() {
-      const { gamepad } = this.state
-      const axis1 = gamepad?.axes[0]
-      const axis2 = gamepad?.axes[1]
-
-      return <WrappedComponent {...this.props} axes={[axis1, axis2]} top={0} left={0} />
-    }
-  }
-}
+export const Joystick: React.FC<Props> = ({ xAxis, yAxis }) => (
+  <div>
+    <Container>
+      <Dot top={yAxis * 100} left={xAxis * 100} />
+    </Container>
+  </div>
+)
