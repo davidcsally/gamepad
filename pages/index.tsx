@@ -16,7 +16,7 @@ const Div = styled.div`
 
 const WrappedProController = withGamepad(MappedProController)
 
-const Container = withPadding(withMargin(Div, { margin: 0, marginBottom: '10px' }), '10px')
+const Container = withPadding(withMargin(Div, { margin: '0', marginBottom: '10px' }), { padding: '10px' })
 
 export default function Home() {
   return (
