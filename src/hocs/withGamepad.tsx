@@ -37,7 +37,10 @@ export function withGamepad<T>(WrappedComponent: React.FC<T & withGamepadProps>)
     // docs: https://docs.google.com/document/d/1jPKzVRNzzU4dUsvLpSXm1VXPQZ8FP-0lKMT-R_p-s6g/edit
     vibrate = ({ duration = 250, weakMagnitude = 1, strongMagnitude = 1 }) => {
       const { gamepad } = this.state
-      if (!gamepad) return
+      if (!gamepad) {
+        this.deviceVibration()
+        return
+      }
 
       gamepad.vibrationActuator?.playEffect('dual-rumble',
         {
@@ -46,6 +49,10 @@ export function withGamepad<T>(WrappedComponent: React.FC<T & withGamepadProps>)
           strongMagnitude,
         }
       )
+    }
+
+    deviceVibration = () => {
+      window.navigator?.vibrate(200);
     }
 
     render() {
