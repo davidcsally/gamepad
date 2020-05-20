@@ -75,6 +75,10 @@ export default function Home() {
     <Container>
       <Head>
         <title>Gamepad API Demo</title>
+        <meta
+          name="description"
+          content="This demonstrates how to use the Gamepad API in modern browsers, including Chrome, Edge, Safari, and Firefox."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
