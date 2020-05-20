@@ -5,15 +5,15 @@ export class Gamepad {
   gamepad = null
   isConnected: boolean = false
 
-  constructor() {
-    this.onConnect()
+  constructor(startPolling) {
+    this.onConnect(startPolling)
   }
 
-  onConnect = () => {
+  onConnect = (startPolling) => {
     window.addEventListener(gamepadconnected, (e: GamepadEvent) => {
-      console.log('connected!')
       this.gamepad = navigator.getGamepads()[e.gamepad.index]
       this.isConnected = true
+      startPolling()
     })
   }
 
@@ -23,14 +23,6 @@ export class Gamepad {
       this.gamepad = null;
     });
   }
-
-  // getAxis1 = () => {
-  //   return this.gamepad?.axes?.[0]
-  // }
-
-  // getAxis2 = () => {
-  //   return this.gamepad?.axes?.[0]
-  // }
 }
 
 

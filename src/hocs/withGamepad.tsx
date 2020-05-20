@@ -22,8 +22,11 @@ export function withGamepad<T>(WrappedComponent: React.FC<T & withGamepadProps>)
     }
 
     componentDidMount() {
-      window.requestAnimationFrame(() => { this.tick() })
-      this.gamepad = new Gamepad()
+      this.gamepad = new Gamepad(this.startPolling)
+    }
+
+    startPolling = () => {
+      this.tick()
     }
 
     tick = () => {
