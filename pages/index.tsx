@@ -64,8 +64,9 @@ const Main = styled.main`
 
 const Title = styled.h1`
   margin: 0;
+  font-family: 'Press Start 2P', var(--default-fonts);
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
   margin-bottom: 2rem;
 `
@@ -80,6 +81,7 @@ export default function Home() {
           content="This demonstrates how to use the Gamepad API in modern browsers, including Chrome, Edge, Safari, and Firefox."
         />
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
       </Head>
       <Main>
         <Title>
