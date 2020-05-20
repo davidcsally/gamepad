@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 import { Gamepad } from '../utils/gamepad'
 
 export interface HocProps {
-  xAxis: number;
-  yAxis: number;
+  xAxis?: number;
+  yAxis?: number;
+  buttons?: GamepadButton[]
 }
 
 export function withGamepad<T>(WrappedComponent: React.FC<T & HocProps>) {
@@ -35,12 +36,14 @@ export function withGamepad<T>(WrappedComponent: React.FC<T & HocProps>) {
       const { gamepad } = this.state
       const xAxis = gamepad?.axes[0]
       const yAxis = gamepad?.axes[1]
+      const buttons = gamepad?.buttons || []
 
       return (
         <WrappedComponent
           {...this.props}
           xAxis={xAxis}
           yAxis={yAxis}
+          buttons={buttons}
         />
       )
     }
