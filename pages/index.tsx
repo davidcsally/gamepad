@@ -2,9 +2,6 @@ import React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 
-import { withMargin } from '../src/styleHocs/withMargin'
-import { withPadding } from '../src/styleHocs/withPadding'
-
 import { MappedProController } from '../src/components/FaceButtons'
 import { withGamepad } from '../src/hocs/withGamepad'
 
@@ -16,8 +13,6 @@ const Div = styled.div`
 
 const WrappedProController = withGamepad(MappedProController)
 
-const Container = withPadding(withMargin(Div, { margin: '0', marginBottom: '10px' }), { padding: '10px' })
-
 export default function Home() {
   return (
     <div className="container">
@@ -27,7 +22,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <Container />
         <div className="grid">
           <div className="card">
             <h3>Pro</h3>
