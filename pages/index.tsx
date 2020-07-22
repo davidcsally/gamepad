@@ -32,7 +32,7 @@ const Card = styled.div`
     border-color: #0070f3;
   }
 
-  & h3 {
+  & h2 {
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
   }
@@ -89,11 +89,11 @@ export default function Home() {
         </Title>
         <Grid>
           <Card>
-            <h3>Switch Pro Controller</h3>
+            <h2>Switch Pro Controller</h2>
             <WrappedProController />
           </Card>
           <Card>
-            <h3>Bzzzz zzzz </h3>
+            <h2>Bzzzz zzzz </h2>
             <ConnectedVibrator />
           </Card>
         </Grid>
