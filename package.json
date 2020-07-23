@@ -10,7 +10,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.19",
     "border-box.css": "^1.0.0",
     "next": "9.4.4",
     "normalize.css": "^8.0.1",
