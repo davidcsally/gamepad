@@ -27,6 +27,6 @@
     "@storybook/react": "^5.3.19",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.7"
   }
 }
