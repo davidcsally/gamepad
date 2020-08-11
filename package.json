@@ -12,7 +12,7 @@
   "dependencies": {
     "@storybook/addon-knobs": "^5.3.19",
     "border-box.css": "^1.0.0",
-    "next": "9.5.1",
+    "next": "9.5.2",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
