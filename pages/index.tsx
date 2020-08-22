@@ -81,7 +81,6 @@ export default function Home() {
           content="This demonstrates how to use the Gamepad API in modern browsers, including Chrome, Edge, Safari, and Firefox."
         />
         <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
       </Head>
       <Main>
         <Title>
