@@ -22,7 +22,7 @@
     "@storybook/addon-actions": "^6.0.16",
     "@storybook/addon-knobs": "^6.0.16",
     "@storybook/addon-links": "^6.0.16",
-    "@storybook/addons": "^6.0.16",
+    "@storybook/addons": "^6.0.18",
     "@storybook/react": "^6.0.16",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
